@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Lecturer\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('admin.dashboard');
+    return view('lecturer.pages.dashboard');
 });
+
+// Route::get('dashboard', [HomeController::class, 'index'])->name('home.index');
+// Route::resource('user', UserController::class);
+Route::resource('category', CategoryController::class);
+
+Route::resource('news', NewsController::class);
