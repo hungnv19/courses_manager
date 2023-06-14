@@ -41,67 +41,6 @@
 
                     </ul>
                 </li>
-
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Stock
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            {{-- <a href="{{ route('stock.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>List </p>
-                            </a> --}}
-                        </li>
-
-                    </ul>
-                </li>
-
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Categories
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-
-
-                        <li class="nav-item">
-                            {{-- <a href="{{ route('category.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>List</p>
-                            </a> --}}
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Products
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-
-
-                        <li class="nav-item">
-                            {{-- <a href="{{ route('product.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>List</p>
-                            </a> --}}
-                        </li>
-
-                    </ul>
-                </li>
                 <li class="nav-item">
                     <a href="" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -120,24 +59,7 @@
 
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Orders
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            {{-- <a href="{{ route('orders.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>List</p>
-                            </a> --}}
-                        </li>
 
-                    </ul>
-                </li>
                 <li class="nav-item">
                     <a href="" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -156,45 +78,6 @@
 
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Color
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            {{-- <a href="{{ route('colors.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>List</p>
-                            </a> --}}
-                        </li>
-
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Size
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            {{-- <a href="{{ route('sizes.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>List</p>
-                            </a> --}}
-                        </li>
-
-                    </ul>
-                </li>
-
-
-
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

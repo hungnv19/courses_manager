@@ -21,7 +21,7 @@
             :data="{{ json_encode([
                 'urlUpdate' => route('news.update', $new->id),
                 'urlBack' => route('news.index'),
-                'categories' => $categories,
+                
                 'new' => $new,
             ]) }}">
         </news-edit>

@@ -21,7 +21,7 @@
             :data="{{ json_encode([
                 'urlStore' => route('news.store'),
                 'urlBack' => route('news.index'),
-                'categories' => $categories,
+                
             ]) }}">
         </news-create>
     </section>

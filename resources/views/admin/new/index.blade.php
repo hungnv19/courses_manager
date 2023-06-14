@@ -50,7 +50,7 @@
                                         <thead class="thead-light">
                                             <tr>
                                                 <th class="text-center">ID</th>
-                                                <th class="text-center">Category Id</th>
+
                                                 <th class="text-center">Title</th>
                                                 <th class="text-center">Image</th>
                                                 <th class="text-center">Day Create</th>
@@ -63,15 +63,13 @@
                                                     <td class="text-center">
                                                         {{ $new->id }}
                                                     </td>
-                                                    <td class="text-center">
-                                                        {{ $new->categories_name }}
-                                                    </td>
+
                                                     <td class="text-center">
                                                         {{ $new->title }}
                                                     </td>
                                                     <td class="text-center">
                                                         <img src=" {{ Storage::url($new->image) }}"
-                                                            style="width: 60px; height: 60px; object-fit: cover" />
+                                                            style="width: 100px; height: 100px; object-fit: cover" />
                                                     </td>
                                                     <td class="text-center">
                                                         {{ $new->created_at }}
@@ -111,7 +109,7 @@
                                 </div>
                                 <data-empty></data-empty>
                             @endif
-                        </div>              
+                        </div>
                     </div>
                     {{ $news->links('pagination::bootstrap-5') }}
                 </div>

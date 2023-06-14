@@ -26,6 +26,9 @@
     <link rel="stylesheet" href="{{ asset('client/css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('client/css/style.css') }}">
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
+
+
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script>
         window.Laravel = {!! json_encode(
@@ -360,7 +363,17 @@
     <!-- Jquery Plugins, main Jquery -->
     <script src="{{ asset('client/js/plugins.js') }}"></script>
     <script src="{{ asset('client/js/main.js') }}"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
+    <script>
+        $(document).ready(function() {
+            toastr.options.timeOut = 10000;
+            @if (Session::has('error'))
+                toastr.error('{{ Session::get('error') }}');
+            @elseif (Session::has('success'))
+                toastr.success('{{ Session::get('success') }}');
+            @endif
+        });
+    </script>
 </body>
 
 </html>

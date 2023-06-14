@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Lecturer\CategoryController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
 /*

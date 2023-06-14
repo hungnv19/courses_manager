@@ -31,6 +31,8 @@
         class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ asset('lecturer/css/demo.css') }} " />
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
+
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('lecturer/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}  " />
 
@@ -104,7 +106,17 @@
     <!-- Page JS -->
     <script src="{{ asset('lecturer/js/dashboards-analytics.js') }}"></script>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
+    <script>
+        $(document).ready(function() {
+            toastr.options.timeOut = 10000;
+            @if (Session::has('error'))
+                toastr.error('{{ Session::get('error') }}');
+            @elseif (Session::has('success'))
+                toastr.success('{{ Session::get('success') }}');
+            @endif
+        });
+    </script>
 </body>
 
 </html>
