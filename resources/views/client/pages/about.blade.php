@@ -26,6 +26,16 @@
     <link rel="stylesheet" href="{{ asset('client/css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('client/css/style.css') }}">
 
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script>
+        window.Laravel = {!! json_encode(
+            [
+                'csrfToken' => csrf_token(),
+                'baseUrl' => url('/'),
+            ],
+            JSON_UNESCAPED_UNICODE,
+        ) !!};
+    </script>
 </head>
 
 <body>
