@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ClientController::class, 'index'])->name('home-client');
 Route::get('login', [AuthController::class, 'create'])->name('client-login-create');
 Route::post('login', [AuthController::class, 'store'])->name('client-login-store');
+
 //register client
 Route::get('register', [RegisterController::class, 'createClient'])->name('register.client.create');
 Route::post('register', [RegisterController::class, 'storeClient'])->name('register.client.store');

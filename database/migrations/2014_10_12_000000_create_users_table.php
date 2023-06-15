@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
+            $table->string('name')->nullable();
             $table->string('position')->nullable();
             $table->string('description')->nullable();
             $table->string('phone')->nullable();
@@ -27,8 +28,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->tinyInteger('level')->default(0);
-            $table->tinyInteger('status')->default(0);
-            $table->tinyInteger('role')->default(0);
+            $table->tinyInteger('status')->default(1);
+            $table->tinyInteger('role');
             $table->rememberToken();
             $table->timestamps();
         });
