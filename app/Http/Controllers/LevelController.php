@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Level;
 use Illuminate\Http\Request;
 
 class LevelController extends Controller
@@ -13,7 +14,11 @@ class LevelController extends Controller
      */
     public function index()
     {
-        //
+        $levels = Level::paginate(5);
+        return view('lecturer.level.index', [
+            'title' => 'Level - List',
+            'levels' => $levels,
+        ]);
     }
 
     /**

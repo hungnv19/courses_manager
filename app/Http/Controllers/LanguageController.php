@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Language;
 use Illuminate\Http\Request;
 
 class LanguageController extends Controller
@@ -13,7 +14,11 @@ class LanguageController extends Controller
      */
     public function index()
     {
-        //
+        $languages = Language::paginate(5);
+        return view('lecturer.language.index', [
+            'title' => 'language - List',
+            'languages' => $languages,
+        ]);
     }
 
     /**

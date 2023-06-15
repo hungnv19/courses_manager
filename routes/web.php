@@ -2,11 +2,16 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LecturerController;
+use App\Http\Controllers\LevelController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Models\Level;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +47,10 @@ Route::middleware('lecturer')->group(function () {
         Route::get('dashboard-lecturer', [LecturerController::class, 'index'])->name('lecturer.dashboard');
         Route::get('profile', [LecturerController::class, 'profile'])->name('lecturer.profile');
         Route::resource('categories', CategoryController::class);
+        Route::resource('courses', CourseController::class);
+        Route::resource('levels', LevelController::class);
+        Route::resource('languages', LanguageController::class);
+        Route::resource('courses', CourseController::class);
     });
 });
 
