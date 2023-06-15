@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
+    public Category $category;
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __construct(Category $category)
+    {
+        $this->category = $category;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -21,14 +32,11 @@ class CategoryController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('lecturer.category.create', [
+            'title' => 'Category - Create',
+        ]);
     }
 
     /**
@@ -39,7 +47,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+        $category->name = $request->name;
+        $category->save();
+        if ($category) {
+            return redirect()->route('categories.index')->with('success', 'Thêm danh mục thành công!');
+        } else {
+            return redirect()->route('categories.index')->with('failed', 'Thêm danh mục thất bại!');
+        }
     }
 
     /**
@@ -61,7 +76,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::where('id', $id)->first();
+        return view('lecturer.category.edit', [
+            'category' => $category,
+            'title' => 'Category - Edit',
+        ]);
     }
 
     /**
@@ -73,7 +92,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $category =  $this->category->where('id', $id)->first();
+            $category->name = $request->name;
+            $category->save();
+            return redirect()->route('categories.index')->with('success', 'Cập nhật danh mục thành công!');
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return redirect()->route('categories.index')->with('failed', 'cập nhật danh mục thất bại!');
+        }
     }
 
     /**
@@ -84,6 +111,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (Category::destroy($id)) {
+            return redirect()->back()->with('success', 'Xóa danh mục thành công!');
+        } else {
+            return redirect()->back()->with('failed', 'Xóa danh mục thất bại!');
+        }
     }
 }

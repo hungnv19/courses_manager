@@ -21,6 +21,12 @@ import RegisterClient from './components/auth/registerClient.vue';
 import LevelCreate from './components/lecturer/level/create.vue';
 import LevelEdit from './components/lecturer/level/edit.vue';
 
+import CategoryCreate from './components/lecturer/category/create.vue';
+import CategoryEdit from './components/lecturer/category/edit.vue';
+
+import LanguageCreate from './components/lecturer/language/create.vue';
+import LanguageEdit from './components/lecturer/language/edit.vue';
+
 
 const app = createApp({});
 
@@ -28,11 +34,17 @@ const app = createApp({});
 
 
 
+app.component("category-create", CategoryCreate);
+app.component("category-edit", CategoryEdit);
+
 app.component("news-create", NewsCreate);
 app.component("news-edit", NewsEdit);
 
 app.component("level-create", LevelCreate);
 app.component("level-edit", LevelEdit);
+
+app.component("language-create", LanguageCreate);
+app.component("language-edit", LanguageEdit);
 
 
 app.component("data-empty", DataEmpty);

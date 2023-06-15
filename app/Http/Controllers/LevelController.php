@@ -39,7 +39,9 @@ class LevelController extends Controller
      */
     public function create()
     {
-        return view('lecturer.level.create');
+        return view('lecturer.level.create',[
+            'title' => 'Level - Create'
+        ]);
     }
 
     /**
