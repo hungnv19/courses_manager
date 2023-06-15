@@ -72,7 +72,7 @@
                                                 <!-- Button -->
                                                 <li class="button-header margin-left "><a href="#"
                                                         class="btn">Join</a></li>
-                                                <li class="button-header"><a href="{{ route('client-login-create') }}"
+                                                <li class="button-header"><a href="{{ route('client.create') }}"
                                                         class="btn btn3">Log
                                                         in</a></li>
                                             </ul>

@@ -18,7 +18,7 @@ class RegisterController extends Controller
     }
     public function createClient()
     {
-        return view('auth.register.index', [
+        return view('auth.register', [
             'title' => 'Register'
         ]);
     }

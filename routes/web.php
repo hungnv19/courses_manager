@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\NewsController;
@@ -26,9 +27,9 @@ use Illuminate\Support\Facades\Route;
 
 //client routes
 Route::get('/', [ClientController::class, 'index'])->name('home-client');
-Route::get('login', [AuthController::class, 'create'])->name('client-login-create');
-Route::post('login', [AuthController::class, 'store'])->name('client-login-store');
-
+Route::get('login', [AuthController::class, 'create'])->name('login.create');
+Route::post('login', [AuthController::class, 'store'])->name('login.store');
+Route::get('/logout', [AuthController::class, 'destroy']);
 //register client
 Route::get('register', [RegisterController::class, 'createClient'])->name('register.client.create');
 Route::post('register', [RegisterController::class, 'storeClient'])->name('register.client.store');
@@ -41,7 +42,7 @@ Route::resource('category', CategoryController::class);
 
 
 Route::middleware('admin')->group(function () {
-    Route::get('dashboard', [HomeController::class, 'index'])->name('home.index');
+    Route::get('dashboard', [AdminController::class, 'index'])->name('home.index');
     Route::resource('user', UserController::class);
     Route::resource('news', NewsController::class);
 });
