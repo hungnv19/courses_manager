@@ -72,7 +72,8 @@
                                                 <!-- Button -->
                                                 <li class="button-header margin-left "><a href="#"
                                                         class="btn">Join</a></li>
-                                                <li class="button-header"><a href="login.html" class="btn btn3">Log
+                                                <li class="button-header"><a href="{{ route('client-login-create') }}"
+                                                        class="btn btn3">Log
                                                         in</a></li>
                                             </ul>
                                         </nav>

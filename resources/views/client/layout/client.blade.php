@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Courses | Education</title>
+    @if (isset($title))
+        <title>{{ $title }}</title>
+    @endif
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{-- <link rel="manifest" href="site.webmanifest"> --}}

@@ -22,26 +22,6 @@
                 <div class="form-group">
                   <div class="form-row">
                     <div class="col-6">
-                      <label class="" require>Category</label>
-                      <select
-                        class="form-select"
-                        name="category_id"
-                        aria-label="Default select example"
-                        rules="required"
-                        v-model="model.category_id"
-                      >
-                        <option value disabled selected>Chọn danh muc</option>
-                        <option
-                          v-for="item in data.categories"
-                          :key="item.id"
-                          :value="item.id"
-                        >
-                          {{ item.label }}
-                        </option>
-                      </select>
-                      <ErrorMessage class="error" name="category_id" />
-                    </div>
-                    <div class="col-6">
                       <label class="" require>Title</label>
                       <Field
                         type="text"
@@ -186,7 +166,6 @@ export default {
       typeFile: "file",
       errMsgImage: "",
       hasErrImg: false,
-      categories: [],
     };
   },
   created() {

@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,12 +17,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('lecturer.pages.dashboard');
-});
+// Route::get('/', function () {
+//     return view('client.pages.index');
+// });
 
 // Route::get('dashboard', [HomeController::class, 'index'])->name('home.index');
-// Route::resource('user', UserController::class);
+
+//client routes
+Route::get('/', [ClientController::class, 'index'])->name('home-client');
+Route::get('login', [AuthController::class, 'create'])->name('client-login-create');
+
+
+//lecture routes
 Route::resource('category', CategoryController::class);
 
+
+//admin routes
+Route::resource('user', UserController::class);
 Route::resource('news', NewsController::class);

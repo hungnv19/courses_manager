@@ -2,18 +2,43 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class UserController extends BaseController
 {
+    public User $user;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __construct(User $user)
     {
-        //
+        $this->user = $user;
+    }
+
+    public function index(Request $request)
+    {
+        $search =  $request->input('search_input');
+        if ($search != "") {
+            $user = User::where(function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%')
+                ->orWhere('id', 'like', '%' . $search . '%');
+            })
+                ->paginate(5);
+            $user->appends(['search_input' => $search]);
+        } else {
+            $user = User::paginate(5);
+        }
+        // $user = User::paginate(5);
+        return view('admin.user.index', [
+            'users' => $user,
+            'title' => 'User'
+        ]);
     }
 
     /**
@@ -23,7 +48,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user.create', [
+
+            'title' => 'Thêm user'
+        ]);
     }
 
     /**
@@ -34,7 +62,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+
+        $user->save();
+        if ($user) {
+            return redirect()->route('user.index')->with('success', 'Thêm người dùng thành công!');
+        } else {
+            return redirect()->route('user.index')->with('failed', 'Thêm người dùng thất bại!');
+        }
     }
 
     /**
@@ -56,7 +94,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::where('id', $id)->first();
+        return view('admin.user.edit', [
+            'user' => $user,
+            'title' => 'Sua danh mục'
+        ]);
     }
 
     /**
@@ -68,7 +110,17 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $user =  $this->user->where('id', $id)->first();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->save();
+
+            return redirect()->route('user.index')->with('success', 'Cập nhật  thành công!');
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return redirect()->route('user.index')->with('success', 'Cập nhật  thất bại!');
+        }
     }
 
     /**
@@ -79,6 +131,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (User::destroy($id)) {
+            return redirect()->back()->with('success', 'Xóa người dùng thành công!');
+        } else {
+            return redirect()->back()->with('failed', 'Xóa người dùng thất bại!');
+        }
     }
 }
