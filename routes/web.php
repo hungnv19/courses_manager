@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
@@ -19,30 +20,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('client.pages.index');
-// });
 
-// Route::get('dashboard', [HomeController::class, 'index'])->name('home.index');
 
 //client routes
 Route::get('/', [ClientController::class, 'index'])->name('home-client');
+Route::get('about', [ClientController::class, 'about'])->name('client.about');
+Route::get('blog', [ClientController::class, 'blog'])->name('client.blog');
+Route::get('contact', [ClientController::class, 'contact'])->name('client.contact');
+Route::get('courses', [ClientController::class, 'courses'])->name('client.courses');
 Route::get('login', [AuthController::class, 'create'])->name('login.create');
 Route::post('login', [AuthController::class, 'store'])->name('login.store');
 Route::get('/logout', [AuthController::class, 'destroy']);
+
 //register client
 Route::get('register', [RegisterController::class, 'createClient'])->name('register.client.create');
 Route::post('register', [RegisterController::class, 'storeClient'])->name('register.client.store');
 
 //lecture routes
-Route::resource('category', CategoryController::class);
-
+Route::middleware('lecturer')->group(function () {
+    Route::get('dashboard', [LecturerController::class, 'index'])->name('dashboard-lecturer');
+    Route::resource('category', CategoryController::class);
+});
 
 //admin routes
-
-
 Route::middleware('admin')->group(function () {
-    Route::get('dashboard', [AdminController::class, 'index'])->name('home.index');
+    Route::get('dashboard', [AdminController::class, 'index'])->name('admin.home.index');
     Route::resource('user', UserController::class);
     Route::resource('news', NewsController::class);
 });

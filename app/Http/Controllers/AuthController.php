@@ -47,10 +47,23 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
+        // $lecture = [
+        //     'username' => $request->username,
+        //     'password' => $request->password,
+        //     'role' => 1,
+        // ];
+
         if (!auth()->attempt(request(['email', 'password']))) {
             return abort('403');
         }
-        return redirect()->route('home.index');
+        // } else {
+        //     if (Auth::check($lecture)) {
+        //         return redirect()->route('dashboard-lecturer')->with('success', 'Đăng nhập thành công!');
+        //     } else {
+        //         return abort('403');
+        //     }
+        // }
+        return redirect()->route('admin.home.index');
     }
 
     /**

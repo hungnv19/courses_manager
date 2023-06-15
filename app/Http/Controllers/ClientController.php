@@ -10,4 +10,21 @@ class ClientController extends Controller
     {
         return view('client.pages.index', []);
     }
+    protected function about()
+    {
+        return view('client.pages.about', []);
+    }
+    protected function contact()
+    {
+        return view('client.pages.contact', []);
+    }
+    protected function blog()
+    {
+        return view('client.pages.blog', []);
+    }
+    protected function courses()
+    {
+        return view('client.pages.courses', []);
+    }
+    
 }

@@ -49,7 +49,7 @@
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
-                                    <a href="index.html"><img src="client/img/logo/logo.png" alt=""></a>
+                                    <a href="/"><img src="client/img/logo/logo.png" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10">
@@ -58,23 +58,54 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">
-                                                <li class="active"><a href="index.html">Home</a></li>
-                                                <li><a href="courses.html">Courses</a></li>
-                                                <li><a href="about.html">About</a></li>
-                                                <li><a href="#">Blog</a>
+                                                <li class="active"><a href="/">Home</a></li>
+                                                <li><a href="{{ route('client.courses') }}">Courses</a></li>
+                                                <li><a href="{{ route('client.about') }}">About</a></li>
+                                                <li><a>Blog</a>
                                                     <ul class="submenu">
-                                                        <li><a href="blog.html">Blog</a></li>
-                                                        <li><a href="blog_details.html">Blog Details</a></li>
-                                                        <li><a href="elements.html">Element</a></li>
+                                                        <li><a href="{{ route('client.blog') }}">Blog</a></li>
+                                                        <li><a href="#">Blog Details</a></li>
+
                                                     </ul>
                                                 </li>
-                                                <li><a href="contact.html">Contact</a></li>
+                                                <li><a href="{{ route('client.contact') }}">Contact</a></li>
                                                 <!-- Button -->
                                                 <li class="button-header margin-left "><a href="#"
                                                         class="btn">Join</a></li>
-                                                <li class="button-header"><a href="{{ route('client.create') }}"
-                                                        class="btn btn3">Log
-                                                        in</a></li>
+
+                                                @if (!Auth::check())
+                                                    <li class="button-header"><a href="{{ route('login.create') }}"
+                                                            class="btn btn3">Log
+                                                            in</a></li>
+                                                @else
+                                                    <li class="button-header"><a
+                                                            class="btn btn3">{{ Auth::user()->last_name }}</a>
+                                                        <ul class="submenu">
+                                                            <li>
+                                                                <a class="dropdown-item" href="#">
+                                                                    <i class="bx bx-user me-2"></i>
+                                                                    <span class="align-middle">My Profile</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="#">
+                                                                    <i class="bx bx-cog me-2"></i>
+                                                                    <span class="align-middle">Settings</span>
+                                                                </a>
+                                                            </li>
+
+                                                            <li>
+                                                                <div class="dropdown-divider"></div>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="{{ asset('/logout') }}">
+                                                                    <i class="bx bx-power-off me-2"></i>
+                                                                    <span class="align-middle">Log Out</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                @endif
                                             </ul>
                                         </nav>
                                     </div>
@@ -101,7 +132,8 @@
                         <div class="row">
                             <div class="col-xl-6 col-lg-7 col-md-12">
                                 <div class="hero__caption">
-                                    <h1 data-animation="fadeInLeft" data-delay="0.2s">Online learning<br> platform</h1>
+                                    <h1 data-animation="fadeInLeft" data-delay="0.2s">Online learning<br> platform
+                                    </h1>
                                     <p data-animation="fadeInLeft" data-delay="0.4s">Build skills with courses,
                                         certificates, and degrees online from world-class universities and companies</p>
                                     <a href="#" class="btn hero-btn" data-animation="fadeInLeft"
