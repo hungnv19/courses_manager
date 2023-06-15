@@ -38,5 +38,10 @@ Route::resource('category', CategoryController::class);
 
 
 //admin routes
-Route::resource('user', UserController::class);
-Route::resource('news', NewsController::class);
+
+
+Route::middleware('admin')->group(function () {
+    Route::get('dashboard', [HomeController::class, 'index'])->name('home.index');
+    Route::resource('user', UserController::class);
+    Route::resource('news', NewsController::class);
+});
