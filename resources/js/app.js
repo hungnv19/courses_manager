@@ -21,6 +21,9 @@ import RegisterClient from './components/auth/registerClient.vue';
 import LevelCreate from './components/lecturer/level/create.vue';
 import LevelEdit from './components/lecturer/level/edit.vue';
 
+import CourseCreate from './components/lecturer/course/create.vue';
+import CourseEdit from './components/lecturer/course/edit.vue';
+
 import CategoryCreate from './components/lecturer/category/create.vue';
 import CategoryEdit from './components/lecturer/category/edit.vue';
 
@@ -33,6 +36,9 @@ const app = createApp({});
 
 
 
+
+app.component("course-create", CourseCreate);
+app.component("course-edit", CourseEdit);
 
 app.component("category-create", CategoryCreate);
 app.component("category-edit", CategoryEdit);

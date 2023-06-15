@@ -19,7 +19,7 @@ class Course extends Model
     /**
      * @var array
      */
-    protected $fillable = ['title', 'description', 'language_id', 'level_id', 'category_id', 'created_at', 'updated_at'];
+    protected $fillable = ['title', 'image', 'description', 'language_id', 'level_id', 'category_id', 'created_at', 'updated_at'];
 
     public function category()
     {
