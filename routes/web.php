@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,10 @@ use Illuminate\Support\Facades\Route;
 //client routes
 Route::get('/', [ClientController::class, 'index'])->name('home-client');
 Route::get('login', [AuthController::class, 'create'])->name('client-login-create');
-
+Route::post('login', [AuthController::class, 'store'])->name('client-login-store');
+//register client
+Route::get('register', [RegisterController::class, 'createClient'])->name('register.client.create');
+Route::post('register', [RegisterController::class, 'storeClient'])->name('register.client.store');
 
 //lecture routes
 Route::resource('category', CategoryController::class);
