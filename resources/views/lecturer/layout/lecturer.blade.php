@@ -25,7 +25,7 @@
         rel="stylesheet" />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../lecturer/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="{{ asset('lecturer/vendor/fonts/boxicons.css') }}" />
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="{{ asset('lecturer/vendor/css/core.css') }} " class="template-customizer-core-css" />
@@ -42,6 +42,7 @@
     <script src="{{ asset('lecturer/vendor/js/helpers.js') }}  "></script>
     <script src="{{ asset('lecturer/js/config.js') }}  "></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Theme style -->
     <script>
         window.Laravel = {!! json_encode(
             [
@@ -51,6 +52,11 @@
             JSON_UNESCAPED_UNICODE,
         ) !!};
     </script>
+    <style>
+        .required-label {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>

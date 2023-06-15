@@ -1,6 +1,9 @@
 @extends('lecturer.layout.lecturer')
 @section('content')
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Courses /</span> List</h4>
+    {{-- <a class="btn btn-sm btn-primary" href="{{ route('levels.create') }}">Create</a>
+    <br>
+    <br> --}}
     <div class="card">
 
         <div class="table-responsive text-nowrap">

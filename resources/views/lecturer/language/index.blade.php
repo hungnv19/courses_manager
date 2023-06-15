@@ -1,6 +1,9 @@
 @extends('lecturer.layout.lecturer')
 @section('content')
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Language /</span> List</h4>
+    <a class="btn btn-sm btn-primary" href="{{ route('languages.create') }}">Create</a>
+    <br>
+    <br>
     <div class="card">
         @if ($languages->count() > 0)
             <div class="table-responsive text-nowrap">

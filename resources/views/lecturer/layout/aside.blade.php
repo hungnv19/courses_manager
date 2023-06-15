@@ -48,7 +48,7 @@
             <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
         </a>
 
-        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+        <a href="{{ route('lecturer.dashboard') }}" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
             <i class="bx bx-chevron-left bx-sm align-middle"></i>
         </a>
     </div>
@@ -70,26 +70,26 @@
             <span class="menu-header-text">Pages</span>
         </li>
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link ">
+            <a href="{{ route('courses.index') }}" class="menu-link ">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Account Settings">Courses</div>
             </a>
         </li>
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link">
+            <a href="{{ route('categories.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
                 <div data-i18n="Authentications">Categories</div>
             </a>
 
         </li>
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link ">
+            <a href="{{ route('languages.index') }}" class="menu-link ">
                 <i class="menu-icon tf-icons bx bx-cube-alt"></i>
                 <div data-i18n="Misc">Languages</div>
             </a>
         </li>
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link ">
+            <a href="{{ route('levels.index') }}" class="menu-link ">
                 <i class="menu-icon tf-icons bx bx-cube-alt"></i>
                 <div data-i18n="Misc">Levels</div>
             </a>
