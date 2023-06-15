@@ -10,4 +10,8 @@ class LecturerController extends Controller
     {
         return view('lecturer.pages.dashboard');
     }
+    protected function profile()
+    {
+        return view('lecturer.pages.profile');
+    }
 }

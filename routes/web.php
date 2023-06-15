@@ -38,13 +38,18 @@ Route::post('register', [RegisterController::class, 'storeClient'])->name('regis
 
 //lecture routes
 Route::middleware('lecturer')->group(function () {
-    Route::get('dashboard', [LecturerController::class, 'index'])->name('dashboard-lecturer');
-    Route::resource('category', CategoryController::class);
+    Route::prefix('lecturer')->group(function () {
+        Route::get('dashboard-lecturer', [LecturerController::class, 'index'])->name('lecturer.dashboard');
+        Route::get('profile', [LecturerController::class, 'profile'])->name('lecturer.profile');
+        Route::resource('categories', CategoryController::class);
+    });
 });
 
 //admin routes
 Route::middleware('admin')->group(function () {
-    Route::get('dashboard', [AdminController::class, 'index'])->name('admin.home.index');
-    Route::resource('user', UserController::class);
-    Route::resource('news', NewsController::class);
+    Route::prefix('lecturer')->group(function () {
+        Route::get('dashboard', [AdminController::class, 'index'])->name('admin.home.index');
+        Route::resource('user', UserController::class);
+        Route::resource('news', NewsController::class);
+    });
 });

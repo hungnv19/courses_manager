@@ -47,23 +47,15 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
-        // $lecture = [
-        //     'username' => $request->username,
-        //     'password' => $request->password,
-        //     'role' => 1,
-        // ];
-
-        if (!auth()->attempt(request(['email', 'password']))) {
+        if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'role' => 0], $request->input('remember'))) {
+            return redirect()->route('home-client');
+        } else if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'role' => 1], $request->input('remember'))) {
+            return redirect()->route('lecturer.dashboard');
+        } else if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'role' => 2], $request->input('remember'))) {
+            return redirect()->route('admin.home.index');
+        } else {
             return abort('403');
         }
-        // } else {
-        //     if (Auth::check($lecture)) {
-        //         return redirect()->route('dashboard-lecturer')->with('success', 'Đăng nhập thành công!');
-        //     } else {
-        //         return abort('403');
-        //     }
-        // }
-        return redirect()->route('admin.home.index');
     }
 
     /**
