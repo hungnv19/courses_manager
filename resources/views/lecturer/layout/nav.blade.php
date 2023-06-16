@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <span class="fw-semibold d-block">{{ Auth::user()->last_name }}</span>
-                                    <small class="text-muted">lecturer</small>
+                                    <small class="text-muted">{{ Auth::user()->position }}</small>
                                 </div>
                             </div>
                         </a>
