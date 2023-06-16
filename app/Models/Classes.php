@@ -18,4 +18,9 @@ class Classes extends Model
      * @var array
      */
     protected $fillable = ['name', 'department_id', 'course_id', 'created_at', 'updated_at'];
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
 }
