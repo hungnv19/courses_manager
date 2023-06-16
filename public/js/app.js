@@ -22021,6 +22021,10 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   data: function data() {
     return {
       csrfToken: Laravel.csrfToken,
+      filePreview: "",
+      typeFile: "file",
+      errMsgImage: "",
+      hasErrImg: false,
       model: this.data.user
     };
   },
@@ -22054,6 +22058,47 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     });
   },
   methods: {
+    deleteImage: function deleteImage() {
+      this.typeFile = "hidden";
+      this.filePreview = "";
+      this.media = null;
+      this.ImageNotUser = 1;
+      this.hasErrImg = false;
+    },
+    chooseImage: function chooseImage() {
+      if (this.typeFile == "hidden") {
+        this.typeFile = "file";
+      }
+      this.$refs["fileInput"].click();
+    },
+    onChange: function onChange(e) {
+      var _this = this;
+      var Image = e.target.files[0];
+      if (Image.type.includes("image/jpeg") || Image.type.includes("image/png") || Image.type.includes("image/jpg")) {
+        this.errMsgImage = "";
+        this.hasErrImg = false;
+      } else {
+        this.errMsgImage = "Định dạng hình ảnh không chính xác.";
+        this.hasErrImg = true;
+        return;
+      }
+      if (Image.size >= 20971520) {
+        this.errMsgImage = "Ảnh quá lớn.";
+        this.hasErrImg = true;
+      } else {
+        this.hasErrImg = false;
+      }
+      this.model.image = e.target.files[0];
+      var fileInput = this.$refs.fileInput;
+      var imgFile = fileInput.files;
+      if (imgFile && imgFile[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          _this.filePreview = e.target.result;
+        };
+        reader.readAsDataURL(imgFile[0]);
+      }
+    },
     onInvalidSubmit: function onInvalidSubmit(_ref) {
       var values = _ref.values,
         errors = _ref.errors,
@@ -24239,28 +24284,36 @@ var _hoisted_9 = {
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "firstName",
   "class": "form-label"
-}, "First Name", -1 /* HOISTED */);
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("First Name "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "required-label"
+}, " *")], -1 /* HOISTED */);
 var _hoisted_11 = {
   "class": "mb-3 col-md-6"
 };
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "last_name",
   "class": "form-label"
-}, "Last Name", -1 /* HOISTED */);
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Last Name "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "required-label"
+}, " *")], -1 /* HOISTED */);
 var _hoisted_13 = {
   "class": "mb-3 col-md-6"
 };
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "email",
   "class": "form-label"
-}, "Email", -1 /* HOISTED */);
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Email "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "required-label"
+}, " *")], -1 /* HOISTED */);
 var _hoisted_15 = {
   "class": "mb-3 col-md-6"
 };
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label",
   "for": "phone"
-}, "Phone Number", -1 /* HOISTED */);
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Phone Number "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "required-label"
+}, " *")], -1 /* HOISTED */);
 var _hoisted_17 = {
   "class": "input-group input-group-merge"
 };
@@ -24273,7 +24326,9 @@ var _hoisted_19 = {
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "address",
   "class": "form-label"
-}, "Address", -1 /* HOISTED */);
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Address "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "required-label"
+}, " *")], -1 /* HOISTED */);
 var _hoisted_21 = {
   "class": "mb-3 col-md-4"
 };
@@ -24287,15 +24342,54 @@ var _hoisted_23 = {
 var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "position",
   "class": "form-label"
-}, "Position", -1 /* HOISTED */);
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Position "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "required-label"
+}, " *")], -1 /* HOISTED */);
 var _hoisted_25 = {
-  "class": "mb-3 col-md-10"
+  "class": "mb-3 col-md-12"
 };
 var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "description",
   "class": "form-label"
-}, "Description", -1 /* HOISTED */);
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Description "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "required-label"
+}, " *")], -1 /* HOISTED */);
+var _hoisted_27 = {
+  "class": "row mb-3"
+};
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label",
+  "for": "image"
+}, "Image", -1 /* HOISTED */);
+var _hoisted_29 = {
+  key: 0,
+  "class": "align-center-text"
+};
+var _hoisted_30 = {
+  key: 0
+};
+var _hoisted_31 = {
+  style: {
+    "display": "none"
+  }
+};
+var _hoisted_32 = ["type"];
+var _hoisted_33 = {
+  "class": "d-flex justify-content-center"
+};
+var _hoisted_34 = ["src"];
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa fa-trash"
+}, null, -1 /* HOISTED */);
+var _hoisted_36 = [_hoisted_35];
+var _hoisted_37 = {
+  "class": "text-center mt-3"
+};
+var _hoisted_38 = {
+  key: 0,
+  "class": "error"
+};
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "mt-2"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "submit",
@@ -24309,7 +24403,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Field = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Field");
   var _component_ErrorMessage = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ErrorMessage");
   var _component_VeeForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("VeeForm");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Account "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"card-body\">\r\n          <div class=\"d-flex align-items-start align-items-sm-center gap-4\">\r\n            <img\r\n              src=\"\"\r\n              alt=\"user-avatar\"\r\n              class=\"d-block rounded\"\r\n              height=\"100\"\r\n              width=\"100\"\r\n              id=\"uploadedAvatar\"\r\n            />\r\n            <div class=\"button-wrapper\">\r\n              <label\r\n                for=\"upload\"\r\n                class=\"btn btn-primary me-2 mb-4\"\r\n                tabindex=\"0\"\r\n              >\r\n                <span class=\"d-none d-sm-block\">Upload new photo</span>\r\n                <i class=\"bx bx-upload d-block d-sm-none\"></i>\r\n                <input\r\n                  type=\"file\"\r\n                  id=\"upload\"\r\n                  class=\"account-file-input\"\r\n                  hidden\r\n                  accept=\"image/png, image/jpeg\"\r\n                />\r\n              </label>\r\n              <button\r\n                type=\"button\"\r\n                class=\"btn btn-outline-secondary account-image-reset mb-4\"\r\n              >\r\n                <i class=\"bx bx-reset d-block d-sm-none\"></i>\r\n                <span class=\"d-none d-sm-block\">Reset</span>\r\n              </button>\r\n\r\n              <p class=\"text-muted mb-0\">\r\n                Allowed JPG, GIF or PNG. Max size of 800K\r\n              </p>\r\n            </div>\r\n          </div>\r\n        </div> "), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_VeeForm, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_VeeForm, {
     as: "div",
     "class": "form-owner",
     onInvalidSubmit: $options.onInvalidSubmit
@@ -24439,7 +24533,49 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ErrorMessage, {
         "class": "error",
         name: "description"
-      })])]), _hoisted_27], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_7)];
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+        "class": "display-image",
+        id: "img-preview",
+        onClick: _cache[11] || (_cache[11] = function ($event) {
+          return $options.chooseImage();
+        }),
+        role: "button",
+        onDragover: _cache[12] || (_cache[12] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {}, ["prevent"])),
+        onDrop: _cache[13] || (_cache[13] = function (e) {
+          return _ctx.onDrop(e);
+        })
+      }, [!_ctx.filePreview ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_29, [!_ctx.filePreview ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_30, "Đăng ký bằng cách click hoặc kéo thả")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        type: _ctx.typeFile,
+        onChange: _cache[8] || (_cache[8] = function () {
+          return $options.onChange && $options.onChange.apply($options, arguments);
+        }),
+        ref: "fileInput",
+        accept: "image/*",
+        name: "image",
+        id: "image"
+      }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_32)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [_ctx.filePreview ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
+        key: 0,
+        src: _ctx.filePreview,
+        "class": "img",
+        style: {
+          "width": "300px"
+        }
+      }, null, 8 /* PROPS */, _hoisted_34)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.filePreview ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
+        key: 1,
+        onClick: _cache[9] || (_cache[9] = function () {
+          return $options.deleteImage && $options.deleteImage.apply($options, arguments);
+        }),
+        "class": "icon_delete"
+      }, _hoisted_36)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        "class": "rounded",
+        onClick: _cache[10] || (_cache[10] = function ($event) {
+          return $options.chooseImage();
+        }),
+        type: "button",
+        style: {
+          "display": "none"
+        }
+      }, " アップロード ")])], 32 /* HYDRATE_EVENTS */)]), _ctx.hasErrImg == true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_38, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.errMsgImage), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), _hoisted_39], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_7)];
     }),
     _: 1 /* STABLE */
   }, 8 /* PROPS */, ["onInvalidSubmit"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /Account ")])])]);

@@ -3,47 +3,6 @@
     <div class="col-md-12">
       <div class="card mb-4">
         <h5 class="card-header">Profile Details</h5>
-        <!-- Account -->
-        <!-- <div class="card-body">
-          <div class="d-flex align-items-start align-items-sm-center gap-4">
-            <img
-              src=""
-              alt="user-avatar"
-              class="d-block rounded"
-              height="100"
-              width="100"
-              id="uploadedAvatar"
-            />
-            <div class="button-wrapper">
-              <label
-                for="upload"
-                class="btn btn-primary me-2 mb-4"
-                tabindex="0"
-              >
-                <span class="d-none d-sm-block">Upload new photo</span>
-                <i class="bx bx-upload d-block d-sm-none"></i>
-                <input
-                  type="file"
-                  id="upload"
-                  class="account-file-input"
-                  hidden
-                  accept="image/png, image/jpeg"
-                />
-              </label>
-              <button
-                type="button"
-                class="btn btn-outline-secondary account-image-reset mb-4"
-              >
-                <i class="bx bx-reset d-block d-sm-none"></i>
-                <span class="d-none d-sm-block">Reset</span>
-              </button>
-
-              <p class="text-muted mb-0">
-                Allowed JPG, GIF or PNG. Max size of 800K
-              </p>
-            </div>
-          </div>
-        </div> -->
         <hr class="my-0" />
         <div class="card-body">
           <VeeForm
@@ -62,7 +21,9 @@
               <Field type="hidden" :value="csrfToken" name="_token" />
               <div class="row">
                 <div class="mb-3 col-md-6">
-                  <label for="firstName" class="form-label">First Name</label>
+                  <label for="firstName" class="form-label"
+                    >First Name <span class="required-label"> *</span></label
+                  >
                   <Field
                     class="form-control"
                     type="text"
@@ -75,7 +36,9 @@
                   <ErrorMessage class="error" name="first_name" />
                 </div>
                 <div class="mb-3 col-md-6">
-                  <label for="last_name" class="form-label">Last Name</label>
+                  <label for="last_name" class="form-label"
+                    >Last Name <span class="required-label"> *</span></label
+                  >
                   <Field
                     class="form-control"
                     type="text"
@@ -88,7 +51,9 @@
                   <ErrorMessage class="error" name="first_name" />
                 </div>
                 <div class="mb-3 col-md-6">
-                  <label for="email" class="form-label">Email</label>
+                  <label for="email" class="form-label"
+                    >Email <span class="required-label"> *</span></label
+                  >
                   <Field
                     class="form-control"
                     type="text"
@@ -103,7 +68,9 @@
                 </div>
 
                 <div class="mb-3 col-md-6">
-                  <label class="form-label" for="phone">Phone Number</label>
+                  <label class="form-label" for="phone"
+                    >Phone Number <span class="required-label"> *</span></label
+                  >
                   <div class="input-group input-group-merge">
                     <span class="input-group-text">VN (+84)</span>
                     <Field
@@ -119,7 +86,9 @@
                   </div>
                 </div>
                 <div class="mb-3 col-md-4">
-                  <label for="address" class="form-label">Address</label>
+                  <label for="address" class="form-label"
+                    >Address <span class="required-label"> *</span></label
+                  >
                   <Field
                     type="text"
                     class="form-control"
@@ -142,7 +111,9 @@
                   />
                 </div>
                 <div class="mb-3 col-md-4">
-                  <label for="position" class="form-label">Position</label>
+                  <label for="position" class="form-label"
+                    >Position <span class="required-label"> *</span></label
+                  >
                   <Field
                     class="form-control"
                     type="text"
@@ -154,9 +125,9 @@
                   />
                   <ErrorMessage class="error" name="position" />
                 </div>
-                <div class="mb-3 col-md-10">
+                <div class="mb-3 col-md-12">
                   <label for="description" class="form-label"
-                    >Description</label
+                    >Description <span class="required-label"> *</span></label
                   >
                   <Field
                     class="form-control"
@@ -171,6 +142,62 @@
                     as="textarea"
                   />
                   <ErrorMessage class="error" name="description" />
+                </div>
+                <div class="row mb-3">
+                  <label class="form-label" for="image">Image</label>
+                  <div>
+                    <div
+                      class="display-image"
+                      id="img-preview"
+                      @click="chooseImage()"
+                      role="button"
+                      @dragover.prevent
+                      @drop="(e) => onDrop(e)"
+                    >
+                      <div class="align-center-text" v-if="!filePreview">
+                        <span v-if="!filePreview"
+                          >Đăng ký bằng cách click hoặc kéo thả</span
+                        >
+                      </div>
+                      <div style="display: none">
+                        <input
+                          :type="typeFile"
+                          @change="onChange"
+                          ref="fileInput"
+                          accept="image/*"
+                          name="image"
+                          id="image"
+                        />
+                      </div>
+                      <div class="d-flex justify-content-center">
+                        <img
+                          v-if="filePreview"
+                          :src="filePreview"
+                          class="img"
+                          style="width: 300px"
+                        />
+                        <span
+                          @click="deleteImage"
+                          class="icon_delete"
+                          v-if="filePreview"
+                          ><i class="fa fa-trash"></i
+                        ></span>
+                      </div>
+                      <div class="text-center mt-3">
+                        <button
+                          class="rounded"
+                          @click="chooseImage()"
+                          type="button"
+                          style="display: none"
+                        >
+                          アップロード
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <span class="error" v-if="hasErrImg == true">{{
+                    errMsgImage
+                  }}</span>
                 </div>
               </div>
               <div class="mt-2">
@@ -220,7 +247,10 @@ export default {
   data: function () {
     return {
       csrfToken: Laravel.csrfToken,
-
+      filePreview: "",
+      typeFile: "file",
+      errMsgImage: "",
+      hasErrImg: false,
       model: this.data.user,
     };
   },
@@ -256,6 +286,52 @@ export default {
     });
   },
   methods: {
+    deleteImage() {
+      this.typeFile = "hidden";
+      this.filePreview = "";
+      this.media = null;
+      this.ImageNotUser = 1;
+      this.hasErrImg = false;
+    },
+    chooseImage() {
+      if (this.typeFile == "hidden") {
+        this.typeFile = "file";
+      }
+      this.$refs["fileInput"].click();
+    },
+    onChange(e) {
+      let Image = e.target.files[0];
+      if (
+        Image.type.includes("image/jpeg") ||
+        Image.type.includes("image/png") ||
+        Image.type.includes("image/jpg")
+      ) {
+        this.errMsgImage = "";
+        this.hasErrImg = false;
+      } else {
+        this.errMsgImage = "Định dạng hình ảnh không chính xác.";
+        this.hasErrImg = true;
+        return;
+      }
+      if (Image.size >= 20971520) {
+        this.errMsgImage = "Ảnh quá lớn.";
+        this.hasErrImg = true;
+      } else {
+        this.hasErrImg = false;
+      }
+
+      this.model.image = e.target.files[0];
+      let fileInput = this.$refs.fileInput;
+      let imgFile = fileInput.files;
+
+      if (imgFile && imgFile[0]) {
+        let reader = new FileReader();
+        reader.onload = (e) => {
+          this.filePreview = e.target.result;
+        };
+        reader.readAsDataURL(imgFile[0]);
+      }
+    },
     onInvalidSubmit({ values, errors, results }) {
       let firstInputError = Object.entries(errors)[0][0];
       this.$el.querySelector("input[name=" + firstInputError + "]").focus();
