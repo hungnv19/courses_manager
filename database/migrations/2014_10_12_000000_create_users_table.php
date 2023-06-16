@@ -30,6 +30,7 @@ return new class extends Migration
             $table->tinyInteger('level')->default(0);
             $table->tinyInteger('status')->default(1);
             $table->tinyInteger('role');
+            $table->integer('class_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

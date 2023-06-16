@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('class_weekday', function (Blueprint $table) {
-           
-            $table->integer('class_id');
-            $table->integer('weekday_id');
-            $table->string('hours');
+        Schema::create('departments', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('class_weekday');
+        Schema::dropIfExists('departments');
     }
 };

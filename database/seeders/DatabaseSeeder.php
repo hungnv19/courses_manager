@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -17,5 +18,8 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call(LevelSeeder::class);
         $this->call(UsersSeeder::class);
+        $this->call(LanguageSeeder::class);
+        $this->call(DepartmentSeeder::class);
+        $this->call(CategorySeeder::class);
     }
 }
