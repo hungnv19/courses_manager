@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LanguageController;
@@ -49,6 +50,7 @@ Route::middleware('lecturer')->group(function () {
         Route::post('profile', [LecturerController::class, 'updateProfile'])->name('profile.lecturer.update');
         Route::resource('categories', CategoryController::class);
         Route::resource('courses', CourseController::class);
+        Route::resource('classes', ClassController::class);
         Route::resource('levels', LevelController::class);
         Route::resource('languages', LanguageController::class);
     });

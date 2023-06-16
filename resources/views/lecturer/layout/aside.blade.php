@@ -63,11 +63,14 @@
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
-
-
-
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Pages</span>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('classes.index') }}" class="menu-link ">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div data-i18n="Account Settings">Classes</div>
+            </a>
         </li>
         <li class="menu-item">
             <a href="{{ route('courses.index') }}" class="menu-link ">
