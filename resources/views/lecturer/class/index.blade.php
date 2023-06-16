@@ -5,42 +5,35 @@
     <br>
     <br>
     <div class="card">
-        {{-- @if ($courses->count() > 0) --}}
-        <div class="table-responsive text-nowrap">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th class="text-center">ID</th>
-                        <th class="text-center">Title</th>
-                        <th class="text-center">Image</th>
-                        <th class="text-center">Category</th>
-                        <th class="text-center">Language</th>
-                        <th class="text-center">Level</th>
-                        <th class="text-center">Created</th>
-                        <th colspan="2" class="text-center">Actions</th>
-                    </tr>
-                </thead>
-                <tbody class="table-border-bottom-0">
-                    {{-- @foreach ($courses as $course)
+        @if ($classes->count() > 0)
+            <div class="table-responsive text-nowrap">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Course Name</th>
+                            <th class="text-center">Departments Name</th>
+                            <th class="text-center">Created</th>
+                            <th colspan="2" class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @foreach ($classes as $class)
                             <tr>
                                 <td class="text-center">
-                                    {{ $course->id }}
+                                    {{ $class->id }}
                                 </td>
                                 <td class="text-center">
-                                    {{ $course->title }}
+                                    {{ $class->name }}
                                 </td>
-                                <td class="text-center">
-                                    <img src=" {{ Storage::url($course->image) }}"
-                                        style="width: 60px; height: 60px; object-fit: cover" />
-                                </td>
-                                <td class="text-center">{{ $course->categories_name }}</td>
-                                <td class="text-center">{{ $course->languages_name }}</td>
-                                <td class="text-center">{{ $course->levels_name }}</td>
-                                <td class="text-center">{{ $course->created_at }}</td>
+                                <td class="text-center">{{ $class->courses_title }}</td>
+                                <td class="text-center">{{ $class->departments_name }}</td>
+                                <td class="text-center">{{ $class->created_at }}</td>
                                 <td class="text-center">
                                     <a class="btn btn-sm btn-primary" style="  display: inline-block "
-                                        href="{{ route('courses.edit', $course->id) }}">Edit</a>
-                                    <form action="{{ route('courses.destroy', $course->id) }}" method="Post"
+                                        href="{{ route('classes.edit', $class->id) }}">Edit</a>
+                                    <form action="{{ route('classes.destroy', $class->id) }}" method="Post"
                                         style=" margin-left: 10px; display: inline-block ">
                                         @csrf
                                         @method('DELETE')
@@ -48,31 +41,29 @@
                                     </form>
                                 </td>
                             </tr>
-                        @endforeach --}}
-                </tbody>
-            </table>
-        </div>
-    {{-- @else --}}
-        <div class="table-responsive text-nowrap">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th class="text-center">ID</th>
-                        <th class="text-center">Title</th>
-                        <th class="text-center">Image</th>
-                        <th class="text-center">Category</th>
-                        <th class="text-center">Language</th>
-                        <th class="text-center">Level</th>
-                        <th class="text-center">Created</th>
-                        <th colspan="2" class="text-center">Actions</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-        <br>
-        <data-empty></data-empty>
-        {{-- @endif --}}
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        @else
+            <div class="table-responsive text-nowrap">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Course Name</th>
+                            <th class="text-center">Departments Name</th>
+                            <th class="text-center">Created</th>
+                            <th colspan="2" class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <br>
+            <data-empty></data-empty>
+        @endif
     </div>
     <br>
-    {{-- {{ $courses->links('pagination::bootstrap-5') }} --}}
+    {{ $classes->links('pagination::bootstrap-5') }}
 @endsection

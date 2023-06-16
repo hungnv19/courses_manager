@@ -32,12 +32,18 @@ import CategoryEdit from './components/lecturer/category/edit.vue';
 import LanguageCreate from './components/lecturer/language/create.vue';
 import LanguageEdit from './components/lecturer/language/edit.vue';
 
+import ClassCreate from './components/lecturer/class/create.vue';
+import ClassEdit from './components/lecturer/class/edit.vue';
+
 
 const app = createApp({});
 
 
 
 
+
+app.component("class-create", ClassCreate);
+app.component("class-edit", ClassEdit);
 
 app.component("course-create", CourseCreate);
 app.component("course-edit", CourseEdit);
