@@ -46,11 +46,11 @@ Route::middleware('lecturer')->group(function () {
     Route::prefix('lecturer')->group(function () {
         Route::get('dashboard-lecturer', [LecturerController::class, 'index'])->name('lecturer.dashboard');
         Route::get('profile', [LecturerController::class, 'profile'])->name('lecturer.profile');
+        Route::post('profile', [LecturerController::class, 'updateProfile'])->name('profile.lecturer.update');
         Route::resource('categories', CategoryController::class);
         Route::resource('courses', CourseController::class);
         Route::resource('levels', LevelController::class);
         Route::resource('languages', LanguageController::class);
-        Route::resource('courses', CourseController::class);
     });
 });
 

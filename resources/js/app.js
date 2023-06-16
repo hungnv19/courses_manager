@@ -11,6 +11,8 @@ import { configure, defineRule } from "vee-validate";
 
 import DataEmpty from './components/common/dataEmpty.vue';
 
+import LecturerProfile from './components/lecturer/profile.vue';
+
 
 import NewsCreate from './components/admin/new/create.vue';
 import NewsEdit from './components/admin/new/edit.vue';
@@ -52,8 +54,9 @@ app.component("level-edit", LevelEdit);
 app.component("language-create", LanguageCreate);
 app.component("language-edit", LanguageEdit);
 
-
 app.component("data-empty", DataEmpty);
+
+app.component("lecturer-profile", LecturerProfile);
 
 app.component("form-login", FormLogin);
 app.component("register-client", RegisterClient);
