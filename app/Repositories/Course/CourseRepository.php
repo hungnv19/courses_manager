@@ -5,6 +5,7 @@ namespace App\Repositories\Course;
 
 use App\Http\Controllers\BaseController;
 use App\Models\Course;
+use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -32,5 +33,46 @@ class CourseRepository extends BaseController implements CourseInterface
         }
 
         return $courseBuilder;
+    }
+    public function getById($classId, $courseId)
+    {
+        return $this->course->where([
+            ['class_id', $classId],
+            ['id', $courseId],
+        ])->first();
+    }
+    public function store($classId, Request $request)
+    {
+        $course = new Course();
+        $course->title = $request->title;
+        $course->class_id = $classId;
+        $course->description = $request->description;
+        $course->category_id = $request->category_id;
+        $course->language_id = $request->language_id;
+        $course->level_id = $request->level_id;
+        if ($request->hasFile('image')) {
+            $course->image = $request->image->storeAs('public/images', $request->image->hashName());
+        }
+        $course->save();
+    }
+    public function update($classId, $courseId, Request $request)
+    {
+        try {
+            $course = $this->getById($classId, $courseId);
+            $course->title = $request->title;
+            $course->class_id = $classId;
+            $course->description = $request->description;
+            $course->category_id = $request->category_id;
+            $course->language_id = $request->language_id;
+            $course->level_id = $request->level_id;
+            if ($request->hasFile('image')) {
+                $course->image = $request->image->storeAs('public/images', $request->image->hashName());
+            }
+            $course->save();
+            return $course;
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return false;
+        }
     }
 }

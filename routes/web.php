@@ -51,7 +51,7 @@ Route::middleware('lecturer')->group(function () {
         Route::post('profile', [LecturerController::class, 'updateProfile'])->name('profile.lecturer.update');
         // Route::get('course-class/{id}', [CourseController::class, 'courseClass'])->name('courses.class');
         Route::resource('categories', CategoryController::class);
-        Route::resource('courses', CourseController::class);
+        // Route::resource('courses', CourseController::class);
         Route::resource('classes.courses', CourseController::class);
         Route::resource('classes', ClassController::class);
         Route::resource('levels', LevelController::class);

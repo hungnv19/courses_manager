@@ -12,7 +12,6 @@
                         <tr>
                             <th class="text-center">ID</th>
                             <th class="text-center">Name</th>
-                            <th class="text-center">Course Name</th>
                             <th class="text-center">Departments Name</th>
                             <th class="text-center">Created</th>
                             <th colspan="2" class="text-center">Actions</th>
@@ -27,7 +26,7 @@
                                 <td class="text-center">
                                     {{ $class->name }}
                                 </td>
-                                <td class="text-center">{{ $class->courses_title }}</td>
+                                
                                 <td class="text-center">{{ $class->departments_name }}</td>
                                 <td class="text-center">{{ $class->created_at }}</td>
                                 <td class="text-center">

@@ -4,8 +4,8 @@
 
     <course-create
         :data="{{ json_encode([
-            'urlStore' => route('courses.store'),
-            'urlBack' => route('courses.index'),
+            'urlStore' => route('classes.courses.store', $class->id),
+            'urlBack' => session()->get('lecturer.courses.list')[0] ?? route('classes.courses.index', $class->id),
             'categories' => $categories,
             'languages' => $languages,
             'levels' => $levels,

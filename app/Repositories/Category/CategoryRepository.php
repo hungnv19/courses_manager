@@ -14,8 +14,8 @@ class CategoryRepository extends BaseController implements CategoryInterface
     {
         $this->category = $category;
     }
-    public function getCategories()
+    public function get()
     {
-        return $this->category->select(['categories_title as label', 'id'])->get();
+        return $this->category->select(['name as label', 'id'])->get();
     }
 }

@@ -72,12 +72,12 @@
                 <div data-i18n="Account Settings">Classes</div>
             </a>
         </li>
-        <li class="menu-item">
+        {{-- <li class="menu-item">
             <a href="{{ route('courses.index') }}" class="menu-link ">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Account Settings">Courses</div>
             </a>
-        </li>
+        </li> --}}
         <li class="menu-item">
             <a href="{{ route('categories.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>

@@ -4,8 +4,8 @@
 
     <course-edit
         :data="{{ json_encode([
-            'urlUpdate' => route('courses.update', $course->id),
-            'urlBack' => route('courses.index'),
+            'urlUpdate' => route('classes.courses.update', [ $class->id,  $course->id]),
+            'urlBack' => session()->get('lecturer.courses.list')[0] ?? route('classes.courses.index', $class->id),
             'course' => $course,
             'categories' => $categories,
             'languages' => $languages,

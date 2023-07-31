@@ -1,7 +1,7 @@
 @extends('lecturer.layout.lecturer')
 @section('content')
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Courses /</span> List</h4>
-    <a class="btn btn-sm btn-primary" href="{{ route('courses.create') }}">Create</a>
+    <a class="btn btn-sm btn-primary" href="{{ route('classes.courses.create', $class->id) }}">Create</a>
     <br>
     <br>
     <div class="card">
@@ -27,7 +27,7 @@
                                     {{ $course->id }}
                                 </td>
                                 <td class="text-center">
-                                    <a href="{{ route('courses.class', $course->id) }}">{{ $course->title }}</a>
+                                   {{ $course->title }}
 
                                 </td>
                                 <td class="text-center">
@@ -54,9 +54,9 @@
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                             <a class="dropdown-item"
-                                                type="button"href="{{ route('courses.edit', $course->id) }}"><i
+                                                type="button"href="{{ route('classes.courses.edit', ['class' => $class->id, 'course' => $course->id]) }}"><i
                                                     class="fa fa-eye"></i>   Edit</a>
-                                            <form action="{{ route('courses.destroy', $course->id) }}" method="Post">
+                                            <form action="{{ route('classes.courses.destroy', ['class' => $class->id, 'course' => $course->id]) }}" method="Post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="dropdown-item" type="submit">
