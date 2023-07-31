@@ -18,4 +18,8 @@ class ClassRepository extends BaseController implements ClassInterface
     {
         return $this->classes->where('id', $id)->first();
     }
+
+    public function get(){
+        return $this->classes->select(['name as label', 'id'])->get();
+    }
 }

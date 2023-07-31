@@ -97,5 +97,11 @@
                 <div data-i18n="Misc">Levels</div>
             </a>
         </li>
+        <li class="menu-item">
+            <a href="{{ route('subject.index') }}" class="menu-link ">
+                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                <div data-i18n="Misc">Subject</div>
+            </a>
+        </li>
     </ul>
 </aside>

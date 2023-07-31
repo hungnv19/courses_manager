@@ -36,12 +36,18 @@ import LanguageEdit from './components/lecturer/language/edit.vue';
 import ClassCreate from './components/lecturer/class/create.vue';
 import ClassEdit from './components/lecturer/class/edit.vue';
 
+import SubjectCreate from './components/lecturer/Subject/create.vue';
+import SubjectEdit from './components/lecturer/Subject/edit.vue';
+
 
 const app = createApp({});
 
 
 
 
+
+app.component("subject-create", SubjectCreate);
+app.component("subject-edit", SubjectEdit);
 
 app.component("class-create", ClassCreate);
 app.component("class-edit", ClassEdit);

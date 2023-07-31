@@ -29,7 +29,7 @@ class ClientController extends Controller
     }
     protected function courses()
     {
-        return view('client.pages.courses', []);
+        $courses = Course::with('category')->paginate(6);
+        return view('client.pages.courses', ['courses' => $courses,]);
     }
-    
 }

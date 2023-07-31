@@ -196,7 +196,6 @@
                     </div>
                 </div>
                 <div class="courses-actives">
-                    <!-- Single -->
                     @foreach ($courses as $course)
                         <div class="properties pb-20">
                             <div class="properties__card">

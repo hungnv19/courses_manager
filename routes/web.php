@@ -12,6 +12,7 @@ use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
 use App\Models\Level;
 use Illuminate\Support\Facades\Route;
@@ -56,6 +57,7 @@ Route::middleware('lecturer')->group(function () {
         Route::resource('classes', ClassController::class);
         Route::resource('levels', LevelController::class);
         Route::resource('languages', LanguageController::class);
+        Route::resource('subject', SubjectController::class);
     });
 });
 
