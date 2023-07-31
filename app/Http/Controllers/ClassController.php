@@ -27,9 +27,9 @@ class ClassController extends Controller
      */
     public function index()
     {
-        $classes = $this->class->join('courses', 'courses.id', '=', 'classes.course_id')
+        $classes = $this->class
             ->join('departments', 'departments.id', '=', 'classes.department_id')
-            ->select('classes.*', 'courses.title as courses_title', 'departments.name as departments_name')
+            ->select('classes.*', 'departments.name as departments_name')
             ->paginate(5);
         return view('lecturer.class.index', [
             'title' => 'Class - List',
@@ -44,12 +44,10 @@ class ClassController extends Controller
      */
     public function create()
     {
-        $courses = Course::select('id', 'title as label')->get();
         $departments = Department::select('id', 'name as label')->get();
         return view('lecturer.class.create', [
             'title' => 'Class - Create',
             'departments' => $departments,
-            'courses' => $courses,
         ]);
     }
 
@@ -62,8 +60,7 @@ class ClassController extends Controller
     public function store(Request $request)
     {
         $class = new Classes();
-        $class->name = $request->name;
-        $class->course_id = $request->course_id;
+        $class->name = $request->name;;
         $class->department_id = $request->department_id;
         $class->save();
         if ($class) {

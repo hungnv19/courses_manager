@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->integer('department_id');
-            $table->integer('course_id');
+           
             $table->timestamps();
         });
     }

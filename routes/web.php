@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CourseClassController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LecturerController;
@@ -48,8 +49,10 @@ Route::middleware('lecturer')->group(function () {
         Route::get('dashboard-lecturer', [LecturerController::class, 'index'])->name('lecturer.dashboard');
         Route::get('profile', [LecturerController::class, 'profile'])->name('lecturer.profile');
         Route::post('profile', [LecturerController::class, 'updateProfile'])->name('profile.lecturer.update');
+        // Route::get('course-class/{id}', [CourseController::class, 'courseClass'])->name('courses.class');
         Route::resource('categories', CategoryController::class);
         Route::resource('courses', CourseController::class);
+        Route::resource('classes.courses', CourseController::class);
         Route::resource('classes', ClassController::class);
         Route::resource('levels', LevelController::class);
         Route::resource('languages', LanguageController::class);

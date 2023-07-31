@@ -6,7 +6,6 @@
         :data="{{ json_encode([
             'urlStore' => route('classes.store'),
             'urlBack' => route('classes.index'),
-            'courses' => $courses,
             'departments' => $departments,
         ]) }}">
     </class-create>

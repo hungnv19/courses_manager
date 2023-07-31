@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('description');
             $table->integer('language_id');
+            $table->integer('class_id');
             $table->integer('level_id');
             $table->integer('category_id');
             $table->timestamps();

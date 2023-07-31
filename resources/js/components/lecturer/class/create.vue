@@ -40,32 +40,7 @@
                 </div>
               </div>
 
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="Course"
-                  >Course<span class="required-label"> *</span></label
-                >
-                <div class="col-sm-10">
-                  <select
-                    id="Course"
-                    class="form-control"
-                    rules="required"
-                    name="course_id"
-                    v-model="model.course_id"
-                  >
-                    <option value disabled selected>
-                      --- Chose Course ---
-                    </option>
-                    <option
-                      v-for="course in data.courses"
-                      :key="course.id"
-                      :value="course.id"
-                    >
-                      {{ course.label }}
-                    </option>
-                  </select>
-                  <ErrorMessage class="error" name="course_id" />
-                </div>
-              </div>
+             
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="Department"
                   >Department<span class="required-label"> *</span></label
@@ -147,9 +122,7 @@ export default {
       model: {
         name: "",
         department_id: "",
-        course_id: "",
       },
-      courses: [],
       departments: [],
     };
   },

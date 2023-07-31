@@ -6,7 +6,7 @@
     <br>
     <div class="card">
         @if ($classes->count() > 0)
-            <div class="table-responsive text-nowrap">
+            <div class=" text-nowrap">
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -31,14 +31,28 @@
                                 <td class="text-center">{{ $class->departments_name }}</td>
                                 <td class="text-center">{{ $class->created_at }}</td>
                                 <td class="text-center">
-                                    <a class="btn btn-sm btn-primary" style="  display: inline-block "
-                                        href="{{ route('classes.edit', $class->id) }}">Edit</a>
-                                    <form action="{{ route('classes.destroy', $class->id) }}" method="Post"
-                                        style=" margin-left: 10px; display: inline-block ">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-sm btn-danger" type="submit"> Delete</button>
-                                    </form>
+
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Dropdown
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a class="dropdown-item" type="button"
+                                                href="{{ route('classes.edit', $class->id) }}"><i class="fa fa-eye"></i>
+                                                Edit</a>
+                                            <a class="dropdown-item" type="button"
+                                                href="{{ route('classes.courses.index', $class->id) }}"><i class="fa fa-list-ul"></i>
+                                                Course</a>
+                                            <form action="{{ route('classes.destroy', $class->id) }}" method="Post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="dropdown-item" type="submit">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
