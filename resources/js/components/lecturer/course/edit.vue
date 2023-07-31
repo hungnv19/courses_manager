@@ -140,6 +140,49 @@
                 </div>
               </div>
               <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name"
+                  >Start Date <span class="required-label"> *</span></label
+                >
+                <div class="col-sm-4">
+                  <datepicker
+                    autoApply
+                    keepActionRow
+                    v-model="model.start_date"
+                    :closeOnAutoApply="false"
+                    :enableSeconds="true"
+                    :monthChangeOnScroll="false"
+                    class="col-sm-6"
+                    name="start_date"
+                    :maxDate="model.end_date ? new Date(model.end_date) : null"
+                    :maxTime="setMaxTime()"
+                    timerPicker="false"
+                    format="yyyy/MM/dd HH:mm:ss"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name"
+                  >End Date <span class="required-label"> *</span></label
+                >
+                <div class="col-sm-4">
+                  <datepicker
+                    autoApply
+                    keepActionRow
+                    v-model="model.end_date"
+                    :closeOnAutoApply="false"
+                    :monthChangeOnScroll="false"
+                    class="col-sm-6"
+                    name="end_date"
+                    :minTime="setMinTime()"
+                    :minDate="
+                      model.start_date ? new Date(model.start_date) : null
+                    "
+                    timerPicker="false"
+                    format="yyyy/MM/dd HH:mm:ss"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="image">Image</label>
                 <div>
                   <div
@@ -225,6 +268,8 @@ import {
 } from "vee-validate";
 import { localize } from "@vee-validate/i18n";
 import * as rules from "@vee-validate/rules";
+import Datepicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
 import $ from "jquery";
 
 export default {
@@ -239,6 +284,7 @@ export default {
     VeeForm,
     Field,
     ErrorMessage,
+    Datepicker,
   },
   computed: {},
   props: ["data"],
@@ -335,6 +381,42 @@ export default {
     },
     onSubmit() {
       this.$refs.formData.submit();
+    },
+    setMaxTime() {
+      if (this.model.end_date && this.model.start_date) {
+        let dateStart = new Date(this.model.start_date);
+        let dateEnd = new Date(this.model.end_date);
+        if (
+          dateStart.getFullYear() == dateEnd.getFullYear() &&
+          dateStart.getMonth() == dateEnd.getMonth() &&
+          dateStart.getDate() == dateEnd.getDate()
+        ) {
+          return {
+            hours: dateEnd.getHours(),
+            minutes: dateEnd.getMinutes(),
+            seconds: dateStart.getSeconds(),
+          };
+        }
+      }
+      return null;
+    },
+    setMinTime() {
+      if (this.model.end_date && this.model.start_date) {
+        let dateStart = new Date(this.model.start_date);
+        let dateEnd = new Date(this.model.end_date);
+        if (
+          dateStart.getFullYear() == dateEnd.getFullYear() &&
+          dateStart.getMonth() == dateEnd.getMonth() &&
+          dateStart.getDate() == dateEnd.getDate()
+        ) {
+          return {
+            hours: dateStart.getHours(),
+            minutes: dateStart.getMinutes(),
+            seconds: dateStart.getSeconds(),
+          };
+        }
+      }
+      return null;
     },
   },
 };

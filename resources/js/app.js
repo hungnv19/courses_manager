@@ -7,6 +7,7 @@ import { createApp } from 'vue';
 import $ from "jquery";
 import { configure, defineRule } from "vee-validate";
 
+import Datepicker from '@vuepic/vue-datepicker'
 
 
 import DataEmpty from './components/common/dataEmpty.vue';
@@ -67,5 +68,6 @@ app.component("lecturer-profile", LecturerProfile);
 app.component("form-login", FormLogin);
 app.component("register-client", RegisterClient);
 
+app.component('datepicker', Datepicker);
 
 app.mount("#app");

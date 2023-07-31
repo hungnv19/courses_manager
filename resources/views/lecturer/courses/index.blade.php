@@ -16,7 +16,7 @@
                             <th class="text-center">Category</th>
                             <th class="text-center">Language</th>
                             <th class="text-center">Level</th>
-                            <th class="text-center">Created</th>
+                            <th class="text-center">Start Date</th>
                             <th colspan="2" class="text-center">Actions</th>
                         </tr>
                     </thead>
@@ -44,7 +44,7 @@
                                     {{ $course->levels_name }}
                                 </td>
                                 <td class="text-center">
-                                    {{ $course->created_at }}
+                                    {{ $course->start_date }}
                                 </td>
                                 <td class="text-center">
                                     <div class="dropdown">

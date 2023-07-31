@@ -197,151 +197,47 @@
                 </div>
                 <div class="courses-actives">
                     <!-- Single -->
-                    <div class="properties pb-20">
-                        <div class="properties__card">
-                            <div class="properties__img overlay1">
-                                <a href="#"><img src="client/img/gallery/featured1.png" alt=""></a>
-                            </div>
-                            <div class="properties__caption">
-                                <p>User Experience</p>
-                                <h3><a href="#">Fundamental of UX for Application design</a></h3>
-                                <p>The automated process all your website tasks. Discover tools and techniques to engage
-                                    effectively with vulnerable children and young people.
-
-                                </p>
-                                <div class="properties__footer d-flex justify-content-between align-items-center">
-                                    <div class="restaurant-name">
-                                        <div class="rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half"></i>
-                                        </div>
-                                        <p><span>(4.5)</span> based on 120</p>
-                                    </div>
-                                    <div class="price">
-                                        <span>$135</span>
-                                    </div>
+                    @foreach ($courses as $course)
+                        <div class="properties pb-20">
+                            <div class="properties__card">
+                                <div class="properties__img overlay1">
+                                    <a href="#"><img src=" {{ Storage::url($course->image) }}"
+                                            style="height: 220px; object-fit:cover" alt=""></a>
                                 </div>
-                                <a href="#" class="border-btn border-btn2">Find out more</a>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- Single -->
-                    <!-- Single -->
-                    <div class="properties pb-20">
-                        <div class="properties__card">
-                            <div class="properties__img overlay1">
-                                <a href="#"><img src="client/img/gallery/featured2.png" alt=""></a>
-                            </div>
-                            <div class="properties__caption">
-                                <p>User Experience</p>
-                                <h3><a href="#">Fundamental of UX for Application design</a></h3>
-                                <p>The automated process all your website tasks. Discover tools and techniques to engage
-                                    effectively with vulnerable children and young people.
-                                </p>
-                                <div class="properties__footer d-flex justify-content-between align-items-center">
-                                    <div class="restaurant-name">
-                                        <div class="rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half"></i>
+                                <div class="properties__caption">
+                                    <p>{{$course->category->name}}</p>
+                                    <h3><a href="#">{{ $course->title }}</a></h3>
+                                    <p>{{ $course->description }} </p>
+                                    <div class="properties__footer d-flex justify-content-between align-items-center">
+                                        <div class="restaurant-name">
+                                            <div class="rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half"></i>
+                                            </div>
+                                            <p><span>(4.5)</span> based on 120</p>
                                         </div>
-                                        <p><span>(4.5)</span> based on 120</p>
+                                        <div class="">
+                                            <span>{{ $course->start_date_format }}</span>
+                                        </div>
                                     </div>
-                                    <div class="price">
-                                        <span>$135</span>
-                                    </div>
+                                    <a href="#" class="border-btn border-btn2">Find out more</a>
                                 </div>
-                                <a href="#" class="border-btn border-btn2">Find out more</a>
+
                             </div>
                         </div>
-                    </div>
-                    <!-- Single -->
-                    <!-- Single -->
-                    <div class="properties pb-20">
-                        <div class="properties__card">
-                            <div class="properties__img overlay1">
-                                <a href="#"><img src="client/img/gallery/featured3.png" alt=""></a>
-                            </div>
-                            <div class="properties__caption">
-                                <p>User Experience</p>
-                                <h3><a href="#">Fundamental of UX for Application design</a></h3>
-                                <p>The automated process all your website tasks. Discover tools and techniques to engage
-                                    effectively with vulnerable children and young people.
-
-                                </p>
-                                <div class="properties__footer d-flex justify-content-between align-items-center">
-                                    <div class="restaurant-name">
-                                        <div class="rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half"></i>
-                                        </div>
-                                        <p><span>(4.5)</span> based on 120</p>
-                                    </div>
-                                    <div class="price">
-                                        <span>$135</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="border-btn border-btn2">Find out more</a>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- Single -->
-                    <!-- Single -->
-                    <div class="properties pb-20">
-                        <div class="properties__card">
-                            <div class="properties__img overlay1">
-                                <a href="#"><img src="client/img/gallery/featured2.png" alt=""></a>
-                            </div>
-                            <div class="properties__caption">
-                                <p>User Experience</p>
-                                <h3><a href="#">Fundamental of UX for Application design</a></h3>
-                                <p>The automated process all your website tasks. Discover tools and techniques to engage
-                                    effectively with vulnerable children and young people.
-
-                                </p>
-                                <div class="properties__footer d-flex justify-content-between align-items-center">
-                                    <div class="restaurant-name">
-                                        <div class="rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half"></i>
-                                        </div>
-                                        <p><span>(4.5)</span> based on 120</p>
-                                    </div>
-                                    <div class="price">
-                                        <span>$135</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="border-btn border-btn2">Find out more</a>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- Single -->
+                    @endforeach
                 </div>
             </div>
         </div>
-        <!-- Courses area End -->
-        <!--? About Area-1 Start -->
         <section class="about-area1 fix pt-10">
             <div class="support-wrapper align-items-center">
                 <div class="left-content1">
                     <div class="about-icon">
                         <img src="client/img/icon/about.svg" alt="">
                     </div>
-                    <!-- section tittle -->
                     <div class="section-tittle section-tittle2 mb-55">
                         <div class="front-text">
                             <h2 class="">Learn new skills online with top educators</h2>
@@ -390,8 +286,6 @@
                 </div>
             </div>
         </section>
-        <!-- About Area End -->
-        <!--? top subjects Area Start -->
         <div class="topic-area section-padding40">
             <div class="container">
                 <div class="row justify-content-center">
@@ -508,18 +402,14 @@
                 </div>
             </div>
         </div>
-        <!-- top subjects End -->
-        <!--? About Area-3 Start -->
         <section class="about-area3 fix">
             <div class="support-wrapper align-items-center">
                 <div class="right-content3">
-                    <!-- img -->
                     <div class="right-img">
                         <img src="client/img/gallery/about3.png" alt="">
                     </div>
                 </div>
                 <div class="left-content3">
-                    <!-- section tittle -->
                     <div class="section-tittle section-tittle2 mb-20">
                         <div class="front-text">
                             <h2 class="">Learner outcomes on courses you will take</h2>
@@ -554,8 +444,6 @@
                 </div>
             </div>
         </section>
-        <!-- About Area End -->
-        <!--? Team -->
         <section class="team-area section-padding40 fix">
             <div class="container">
                 <div class="row justify-content-center">
@@ -614,18 +502,14 @@
                 </div>
             </div>
         </section>
-        <!-- Services End -->
-        <!--? About Area-2 Start -->
         <section class="about-area2 fix pb-padding">
             <div class="support-wrapper align-items-center">
                 <div class="right-content2">
-                    <!-- img -->
                     <div class="right-img">
                         <img src="client/img/gallery/about2.png" alt="">
                     </div>
                 </div>
                 <div class="left-content2">
-                    <!-- section tittle -->
                     <div class="section-tittle section-tittle2 mb-20">
                         <div class="front-text">
                             <h2 class="">Take the next step

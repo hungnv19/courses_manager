@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
     protected function index()
     {
-        return view('client.pages.index', []);
+        $courses = Course::with('category')->get();
+        return view('client.pages.index', [
+            'title' => 'Home',
+            'courses' => $courses,
+        ]);
     }
     protected function about()
     {

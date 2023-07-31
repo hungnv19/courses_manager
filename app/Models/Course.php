@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 // use Illuminate\Database\Eloquent\SoftDeletes;
@@ -22,7 +23,18 @@ class Course extends Model
     /**
      * @var array
      */
-    protected $fillable = ['title', 'image', 'description', 'language_id', 'level_id', 'category_id', 'created_at', 'updated_at'];
+    protected $fillable = ['title', 'image', 'description', 'language_id', 'level_id', 'category_id', 'created_at', 'start_date',  'end_date', 'updated_at'];
+
+    protected $appends = [
+
+        'start_date_format',
+        'end_date_format'
+    ];
+
+    protected function serializeDate($date)
+    {
+        return $date->format('Y/m/d');
+    }
 
     public function category()
     {
@@ -39,5 +51,15 @@ class Course extends Model
     public function classes()
     {
         return $this->hasMany(Classes::class);
+    }
+
+    public function getStartDateFormatAttribute()
+    {
+        return Carbon::parse($this->start_date)->format('Y/m/d ');
+    }
+
+    public function getEndDateFormatAttribute()
+    {
+        return Carbon::parse($this->end_date)->format('Y/m/d ');
     }
 }
