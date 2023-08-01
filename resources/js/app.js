@@ -36,15 +36,19 @@ import LanguageEdit from './components/lecturer/language/edit.vue';
 import ClassCreate from './components/lecturer/class/create.vue';
 import ClassEdit from './components/lecturer/class/edit.vue';
 
-import SubjectCreate from './components/lecturer/Subject/create.vue';
-import SubjectEdit from './components/lecturer/Subject/edit.vue';
+import SubjectCreate from './components/lecturer/subject/create.vue';
+import SubjectEdit from './components/lecturer/subject/edit.vue';
 
-
+import SectionCreate from './components/lecturer/section/create.vue';
+import SectionEdit from './components/lecturer/section/edit.vue';
 const app = createApp({});
 
 
 
 
+
+app.component("section-create", SectionCreate);
+app.component("section-edit", SectionEdit);
 
 app.component("subject-create", SubjectCreate);
 app.component("subject-edit", SubjectEdit);

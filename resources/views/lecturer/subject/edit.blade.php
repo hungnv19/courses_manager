@@ -4,8 +4,8 @@
 
     <subject-edit
         :data="{{ json_encode([
-            'urlUpdate' => route('Subject.update', $subject->id),
-            'urlBack' => route('Subject.index'),
+            'urlUpdate' => route('subject.update', $subject->id),
+            'urlBack' => route('subject.index'),
             'subject' => $subject,
         ]) }}">
     </subject-edit>
