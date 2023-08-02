@@ -27,8 +27,7 @@ class SectionController extends Controller
      */
     public function index()
     {
-        $sections = Section::paginate(10);
-        // $sections = Section::with('questions')->paginate(10);
+        $sections = Section::withCount('questions')->paginate(10);
 
         return view('lecturer.section.index', [
             'sections' => $sections
@@ -126,6 +125,10 @@ class SectionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (Section::destroy($id)) {
+            return redirect()->back()->with('success', 'Xóa thành công!');
+        } else {
+            return redirect()->back()->with('failed', 'Xóa thất bại!');
+        }
     }
 }

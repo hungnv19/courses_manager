@@ -31,8 +31,8 @@ class Section extends Model
         return $this->hasMany(Question::class);
     }
 
-    // public function quizHeaders()
-    // {
-    //     return $this->hasMany(QuizHeader::class);
-    // }
+    public function quizHeaders()
+    {
+        return $this->hasMany(QuizHeader::class);
+    }
 }

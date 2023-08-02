@@ -26,10 +26,10 @@ class Question extends Model
         return $this->belongsTo(Section::class);
     }
 
-    // public function answers()
-    // {
-    //     return $this->hasMany(Answer::class);
-    // }
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
 
     public function user()
     {

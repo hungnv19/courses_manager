@@ -12,6 +12,10 @@ use App\Repositories\Language\LanguageInterface;
 use App\Repositories\Language\LanguageRepository;
 use App\Repositories\Level\LevelInterface;
 use App\Repositories\Level\LevelRepository;
+use App\Repositories\Question\QuestionInterface;
+use App\Repositories\Question\QuestionRepository;
+use App\Repositories\Section\SectionInterface;
+use App\Repositories\Section\SectionRepository;
 use App\Repositories\Subject\SubjectInterface;
 use App\Repositories\Subject\SubjectRepository;
 use Illuminate\Support\ServiceProvider;
@@ -31,6 +35,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(LevelInterface::class, LevelRepository::class);
         $this->app->bind(LanguageInterface::class, LanguageRepository::class);
         $this->app->bind(SubjectInterface::class, SubjectRepository::class);
+        $this->app->bind(SectionInterface::class, SectionRepository::class);
+        $this->app->bind(QuestionInterface::class, QuestionRepository::class);
     }
 
     /**

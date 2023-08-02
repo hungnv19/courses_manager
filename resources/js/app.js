@@ -41,11 +41,16 @@ import SubjectEdit from './components/lecturer/subject/edit.vue';
 
 import SectionCreate from './components/lecturer/section/create.vue';
 import SectionEdit from './components/lecturer/section/edit.vue';
+
+import QuestionCreate from './components/lecturer/question/create.vue';
+
 const app = createApp({});
 
 
 
 
+
+app.component("question-create", QuestionCreate);
 
 app.component("section-create", SectionCreate);
 app.component("section-edit", SectionEdit);

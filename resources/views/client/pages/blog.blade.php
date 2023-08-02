@@ -67,9 +67,18 @@
                                                 </ul>
                                             </li>
                                             <li><a href="{{ route('client.contact') }}">Contact</a></li>
+                                            @if (Auth::user())
+                                                <li><a>Quizz</a>
+                                                    <ul class="submenu">
+                                                        <li><a href="{{ route('quiz.index') }}">Start Quizz</a></li>
+                                                        <li><a href="#">Quizz Details</a></li>
+                                                    </ul>
+                                                </li>
+                                            @endif
                                             <!-- Button -->
                                             <li class="button-header margin-left "><a href="#"
                                                     class="btn">Join</a></li>
+
 
                                             @if (!Auth::check())
                                                 <li class="button-header"><a href="{{ route('login.create') }}"

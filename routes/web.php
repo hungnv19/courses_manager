@@ -11,6 +11,8 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\QuizController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SubjectController;
@@ -58,14 +60,22 @@ Route::middleware('lecturer')->group(function () {
         Route::resource('languages', LanguageController::class);
         Route::resource('subject', SubjectController::class);
         Route::resource('section', SectionController::class);
+        Route::resource('section.question', QuestionController::class);
     });
 });
 
 //admin routes
 Route::middleware('admin')->group(function () {
-    Route::prefix('lecturer')->group(function () {
+    Route::prefix('admin')->group(function () {
         Route::get('dashboard', [AdminController::class, 'index'])->name('admin.home.index');
         Route::resource('user', UserController::class);
         Route::resource('news', NewsController::class);
+    });
+});
+
+//admin routes
+Route::middleware('user')->group(function () {
+    Route::prefix('user')->group(function () {
+        Route::resource('quiz', QuizController::class);
     });
 });

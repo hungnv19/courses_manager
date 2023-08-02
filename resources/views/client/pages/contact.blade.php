@@ -39,7 +39,7 @@
 
 <body>
 
-   
+
     <div class="header-area header-transparent">
         <div class="main-header ">
             <div class="header-bottom  header-sticky">
@@ -68,6 +68,14 @@
                                                 </ul>
                                             </li>
                                             <li><a href="{{ route('client.contact') }}">Contact</a></li>
+                                            @if (Auth::user())
+                                                <li><a>Quizz</a>
+                                                    <ul class="submenu">
+                                                        <li><a href="{{ route('quiz.index') }}">Start Quizz</a></li>
+                                                        <li><a href="#">Quizz Details</a></li>
+                                                    </ul>
+                                                </li>
+                                            @endif
                                             <!-- Button -->
                                             <li class="button-header margin-left "><a href="#"
                                                     class="btn">Join</a></li>
@@ -417,7 +425,8 @@
                                                 draggable="false"
                                                 style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; user-select: none; border: 0px; padding: 0px; margin: 0px;">
                                         </div>
-                                    </a></div>
+                                    </a>
+                                </div>
                                 <div
                                     style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); box-sizing: border-box; box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 300px; height: 180px; position: absolute; left: 315px; top: 150px;">
                                     <div style="padding: 0px 0px 10px; font-size: 16px; box-sizing: border-box;">Map
@@ -441,7 +450,8 @@
                                         <div
                                             style="position: relative; padding-right: 6px; padding-left: 6px; box-sizing: border-box; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;">
                                             <a style="text-decoration: none; cursor: pointer; display: none;">Map
-                                                Data</a><span>Map data ©2019 Google</span></div>
+                                                Data</a><span>Map data ©2019 Google</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;">
@@ -462,7 +472,8 @@
                                         <a href="https://www.google.com/intl/en-US_US/help/terms_maps.html"
                                             target="_blank" rel="noopener"
                                             style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">Terms
-                                            of Use</a></div>
+                                            of Use</a>
+                                    </div>
                                 </div><button draggable="false" title="Toggle fullscreen view"
                                     aria-label="Toggle fullscreen view" type="button"
                                     class="gm-control-active gm-fullscreen-control"
@@ -487,7 +498,8 @@
                                             title="Report errors in the road map or imagery to Google"
                                             href="https://www.google.com/maps/@-31.197,150.744,9z/data=!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3"
                                             style="font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;">Report
-                                            a map error</a></div>
+                                            a map error</a>
+                                    </div>
                                 </div>
                                 <div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom"
                                     draggable="false" controlwidth="40" controlheight="81"

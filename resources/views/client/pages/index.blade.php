@@ -70,6 +70,15 @@
                                                 </li>
                                                 <li><a href="{{ route('client.contact') }}">Contact</a></li>
                                                 <!-- Button -->
+                                                @if (Auth::user())
+                                                    <li><a>Quizz</a>
+                                                        <ul class="submenu">
+                                                            <li><a href="{{ route('quiz.index') }}">Start Quizz</a>
+                                                            </li>
+                                                            <li><a href="#">Quizz Details</a></li>
+                                                        </ul>
+                                                    </li>
+                                                @endif
                                                 <li class="button-header margin-left "><a href="#"
                                                         class="btn">Join</a></li>
 
@@ -204,7 +213,7 @@
                                             style="height: 220px; object-fit:cover" alt=""></a>
                                 </div>
                                 <div class="properties__caption">
-                                    <p>{{$course->category->name}}</p>
+                                    <p>{{ $course->category->name }}</p>
                                     <h3><a href="#">{{ $course->title }}</a></h3>
                                     <p>{{ $course->description }} </p>
                                     <div class="properties__footer d-flex justify-content-between align-items-center">
