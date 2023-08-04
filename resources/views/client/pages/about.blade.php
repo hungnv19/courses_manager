@@ -48,7 +48,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo">
-                                <a href="index.html"><img src="client/img/logo/logo.png" alt=""></a>
+                                <a href="/"><img src="{{ asset('client/img/logo/logo.png') }}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10">
@@ -142,7 +142,7 @@
                                     <!-- breadcrumb Start-->
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="/">Home</a></li>
                                             <li class="breadcrumb-item"><a href="#">about</a></li>
                                         </ol>
                                     </nav>

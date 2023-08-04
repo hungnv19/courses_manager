@@ -42,7 +42,7 @@ class UserQuiz extends Component
 
 
         $this->currectQuizAnswers = Quiz::where('quiz_header_id', $this->quizid->id)
-            ->where('is_correct', '1')
+            ->where('correct', '1')
             ->count();
 
 
@@ -131,7 +131,7 @@ class UserQuiz extends Component
             'section_id' => $this->currentQuestion->section_id,
             'question_id' => $this->currentQuestion->id,
             'answer_id' => $answerId,
-            'is_correct' => $isChoiceCorrect
+            'correct' => $isChoiceCorrect
         ]);
         $this->quizid->save();
         $this->count++;
